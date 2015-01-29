@@ -2,16 +2,19 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
   actions: {
-    newNote: function() {
-      var body = this.get('noteCopy');
+    createNote: function() {
+      var title = this.get('noteTitle');
+      var body = this.get('noteBody');
 
       if (body !== undefined) {
         if (body.trim() !== '') {
-          var note = this.store.createRecord('note', {body: body});
+          var note = this.store.createRecord('note', {title: title, body: body});
           note.save();
-          this.set('noteCopy', '');
+          this.set('noteTitle', '');
+          this.set('noteBody', '');
         } else {
-          this.set('noteCopy', '');
+          this.set('noteTitle', '');
+          this.set('noteBody', '');
         }
       }
     }
