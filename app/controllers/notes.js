@@ -5,9 +5,15 @@ export default Ember.ArrayController.extend({
     newNote: function() {
       var body = this.get('noteCopy');
 
-      var note = this.store.createRecord('note', {body: body});
-      this.set('noteCopy', '');
-      note.save();
+      if (body !== undefined) {
+        if (body.trim() !== '') {
+          var note = this.store.createRecord('note', {body: body});
+          note.save();
+          this.set('noteCopy', '');
+        } else {
+          this.set('noteCopy', '');
+        }
+      }
     }
   }
 });
