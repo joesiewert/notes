@@ -5,6 +5,6 @@
 {{#each note in model}}
 {{note.title}}<br>
 {{note.body}}
-<button {{action 'deleteNote'}}>Delete Note</button>
+<button {{action 'deleteNote' note.id}}>Delete Note</button>
 <br><br>
 {{/each}}
