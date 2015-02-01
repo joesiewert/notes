@@ -3,8 +3,6 @@
 <button {{action 'createNote'}}>Save Note</button>
 <br><br>
 {{#each note in model}}
-{{note.title}}<br>
-{{note.body}}
-<button {{action 'deleteNote' note.id}}>Delete Note</button>
+{{simple-note note=note deleteNote="deleteNote"}}
 <br><br>
 {{/each}}
